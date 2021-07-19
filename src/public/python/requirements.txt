@@ -1,0 +1,5 @@
+PyTube
+streamlink
+loguru==0.5.3
+furl==2.1.2
+aioify==0.4.0
