@@ -6,7 +6,7 @@ import {
     Once
 } from "@typeit/discord";
 import {Channel, DMChannel, GuildChannel, NewsChannel, TextChannel} from "discord.js";
-import {downloadClip} from "./download2";
+import {downloadClip, getMaxClipSize} from './download2';
 import {SpawnResult} from "./spawn-util";
 import * as fs from "fs";
 import {getTempFileName} from "./tmpfilenames";
@@ -100,11 +100,11 @@ abstract class AppDiscord {
         await resultmsg.delete();
     }
 
-    async downloadAndShare(url: string, channel) {
+    async downloadAndShare(url: string, channel: TextChannel | NewsChannel) {
         let downloadPath;
 
         try {
-            downloadPath = await downloadClip(url);
+            downloadPath = await downloadClip(url, getMaxClipSize(channel.guild.premiumTier));
         } catch (err) {
             const {code, stdout, stderr} = err as SpawnResult;
             const errMsg = formatDiscordErrorMsg(url, code, stdout, stderr);
