@@ -15,7 +15,7 @@ I like to share funny clips with my friends, but when the clips are deleted, I c
 - Create a bot and invite it to your server with all the necessary permissions. Personally I enabled permissions for `bot` -> [`View Channels`, `Send Messages`, `Manage Messages`, `Attach Files`, `Read Message History`].
 - Create a channel named `#clips`.
 - Copy `.env.template` to `.env` and fill in the variables.
-- Deploy via the Dockerfile. (`docker build -t discord-video-saver . && docker run -d --restart unless-stopped discord-video-saver`)
+- Deploy via the Dockerfile. (`docker build -t discord-video-saver . && docker run --name dvsbot -d --restart unless-stopped discord-video-saver`)
 - Any Youtube/Twitch clips you post to the channel will get automatically downloaded/reuploaded.
 
 ### Potential improvements:
