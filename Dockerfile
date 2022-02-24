@@ -5,10 +5,11 @@ FROM node:16-alpine
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/v3.10/main' >> /etc/apk/repositories
 
 RUN apk update
-RUN apk add --update --no-cache python3==3.7.10-r0 g++
+RUN apk add --update --no-cache python3==3.7.10-r0 g++ libxslt-dev libxml2-dev python3-dev
 WORKDIR /app
 COPY . .
 RUN yarn install
+RUN pip3 install wheel
 RUN pip3 install -r build/src/public/python/requirements.txt
 #CMD ["sleep", "6000"]
 CMD ["node", "build/index.js"]
