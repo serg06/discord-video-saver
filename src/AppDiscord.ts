@@ -86,7 +86,7 @@ abstract class AppDiscord {
             return;
         }
 
-        const urls = text.split(' ').filter(u => ['youtube.com', 'twitch.tv'].filter(host => u.toLowerCase().includes(host)).length);
+        const urls = text.split(/\s+/).filter(u => ['youtube.com', 'twitch.tv'].filter(host => u.toLowerCase().includes(host)).length);
         if (urls.length === 0) {
             return;
         }

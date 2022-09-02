@@ -135,6 +135,7 @@ def getUrlType(url: str) -> Optional[str]:
 
 @aioify
 def downloadClip(url, max_size, output_path):
+    url = url.strip()
     url_type = getUrlType(url)
     if url_type == UrlType.YOUTUBE:
         try:
